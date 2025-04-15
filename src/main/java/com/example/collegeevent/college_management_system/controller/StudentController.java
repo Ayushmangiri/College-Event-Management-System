@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/students")
@@ -26,10 +27,20 @@ public class StudentController {
         return studentService.getAllStudents();
     }
 
+    @GetMapping("/{id}")
+    public Optional<Student> getStudentByID(@PathVariable Long id){
+            return studentService.getStudentsById(id) ;
+      }
 
 
-    @PutMapping
-    public Student updateStudent(@RequestBody Student student,@PathVariable Long id){
+    @PutMapping ("/{id}")
+    public Student updateStudent(@PathVariable Long id,@RequestBody Student updateStudent){
+                return studentService.updateStudent(id, updateStudent);
+    }
 
+    @DeleteMapping("/{id}")
+    public String  deleteStudent(@PathVariable Long id){
+          studentService.deleteStudent(id);
+          return "Student Details is Deleted ";
     }
 }
