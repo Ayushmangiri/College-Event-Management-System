@@ -22,4 +22,10 @@ public class StudentService {
     public  Optional<Student> getStudentsById(Long id){
         return studentRepository.findById(id);
     }
+    public Student createStudent(Student student){
+        return  studentRepository.save(student);
+    }
+    public  Student updateStudent(Student student) {
+    return  studentRepository.existsById()
+    }
 }
