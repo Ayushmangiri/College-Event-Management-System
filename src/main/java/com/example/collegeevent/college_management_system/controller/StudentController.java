@@ -4,6 +4,8 @@ package com.example.collegeevent.college_management_system.controller;
 import com.example.collegeevent.college_management_system.model.Student;
 import com.example.collegeevent.college_management_system.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,9 +30,15 @@ public class StudentController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Student> getStudentByID(@PathVariable Long id){
-            return studentService.getStudentsById(id) ;
-      }
+    public ResponseEntity<?> getStudentByID(@PathVariable Long id){
+        Optional<Student> student = studentService.getStudentsById(id);
+        if(student.isPresent()){
+            return ResponseEntity.ok(student.get());
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Student not found with ID: " + id);
+        }
+    }
+
 
 
     @PutMapping ("/{id}")

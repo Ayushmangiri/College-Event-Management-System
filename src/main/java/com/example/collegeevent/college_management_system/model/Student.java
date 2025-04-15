@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.antlr.v4.runtime.misc.NotNull;
 
 @Entity
 @Table(name = "students")
@@ -20,4 +21,6 @@ public class Student {
     private String name;
     private String department;
     private String email;
+
+
 }
