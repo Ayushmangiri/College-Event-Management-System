@@ -3,6 +3,7 @@ package com.example.collegeevent.college_management_system.controller;
 
 import com.example.collegeevent.college_management_system.model.Student;
 import com.example.collegeevent.college_management_system.service.StudentService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ public class StudentController {
 
       @PostMapping
 
-        public Student createStudent(@RequestBody Student student){
+        public Student createStudent( @Valid @RequestBody Student student){
           return  studentService.createStudent(student);
       }
 
