@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
+import java.lang.Long;
 
 @Service
 public class StudentService {
@@ -25,7 +26,7 @@ public class StudentService {
     }
     public  Student updateStudent(Long id , Student student) {
         if (studentRepository.existsById(id)) {
-            student.setId(id);
+           student.setID(id);
             return  studentRepository.save(student);
         }
         return  null;
