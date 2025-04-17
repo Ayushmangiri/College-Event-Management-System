@@ -39,6 +39,7 @@ public class StudentController {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Student not found with ID: " + id);
         }
+        // here is exception handling ..
     }
 
 
